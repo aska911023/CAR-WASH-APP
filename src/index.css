@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Customer brand */
+  --blue-primary: #2563eb;
+  --blue-light: #eff6ff;
+  --navy: #1e3a8a;
+
+  /* Vendor */
+  --vendor-bg: #ffffff;
+  --vendor-surface: #f8f9fb;
+}
+
+@layer base {
+
+  html,
+  body {
+    background-color: #141414;
+    transition: background-color 0.2s ease;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+
+  /* ── Scrollbar ─────────────────────────── */
+  .nice-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  .nice-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .nice-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+  }
+
+  /* ── Customer FAB ───────────────────────── */
+  .fab {
+    @apply fixed bottom-24 right-4 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(37, 99, 235, 0.35)] bg-brand-600 text-white active:scale-95 transition-all duration-200;
+  }
+
+  /* ── Vendor Status Badges ───────────────── */
+  .badge-pending {
+    @apply bg-amber-50 text-amber-700 border border-amber-200 text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wide;
+  }
+
+  .badge-confirmed {
+    @apply bg-blue-50 text-blue-700 border border-blue-200 text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wide;
+  }
+
+  .badge-completed {
+    @apply bg-green-50 text-green-700 border border-green-200 text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wide;
+  }
+
+  .badge-cancelled {
+    @apply bg-gray-100 text-gray-500 border border-gray-200 text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wide;
+  }
+
+  /* ── Masonry columns ───────────────────── */
+  .masonry-2col {
+    column-count: 2;
+    column-gap: 0.75rem;
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fadeSlideUp 0.25s ease both;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
