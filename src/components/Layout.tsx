@@ -52,12 +52,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 )}
 
                 {/* Main Content */}
-                <main className="flex-1 overflow-y-auto pb-24 nice-scrollbar">
+                <main className="flex-1 overflow-y-auto nice-scrollbar">
                     {children}
                 </main>
 
                 {/* Bottom Navigation */}
-                <div className={`absolute bottom-0 w-full border-t pb-7 pt-2 px-1 flex justify-around items-center z-40 ${isVendor
+                <div className={`sticky bottom-0 w-full border-t pb-7 pt-2 px-1 flex justify-around items-center z-40 shrink-0 ${isVendor
                     ? 'bg-gray-900 border-gray-800'
                     : 'bg-white border-brand-50 shadow-[0_-4px_24px_rgba(37,99,235,0.06)]'
                     }`}>
