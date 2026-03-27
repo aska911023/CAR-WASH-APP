@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useAppContext } from '../../context/AppContext';
 import { MapPin, Bell, AlertTriangle, ChevronRight, Star, Zap, Droplets, Shield, Wrench, Sparkles, Armchair, ShoppingBag, Phone, X, CheckCircle2, Crown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -59,7 +58,6 @@ const SOS_RESCUES = [
 ];
 
 export default function Home() {
-    const { state } = useAppContext();
     const navigate = useNavigate();
     const [activeCar, setActiveCar] = useState(0);
     const [showSOS, setShowSOS] = useState(false);

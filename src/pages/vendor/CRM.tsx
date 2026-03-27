@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, MapPin, Phone, MessageSquare, MoreVertical, Star, Tag, Plus, ChevronRight, TrendingUp, Clock } from 'lucide-react';
+import { Search, MapPin, Phone, MessageSquare, Star, Tag, Plus, ChevronRight, TrendingUp, Clock } from 'lucide-react';
 
 const CUSTOMERS = [
     {

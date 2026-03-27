@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Package, Plus, Edit2, Trash2, TrendingUp, ShoppingCart, Truck, Star } from 'lucide-react';
+import { Plus, Edit2, Trash2, TrendingUp, ShoppingCart, Truck, Star } from 'lucide-react';
 
 const INVENTORY = [
     { id: 1, name: '頂級棕櫚蠟', price: 120, sales: 84, stock: 15, image: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=200&auto=format&fit=crop&q=80' },

@@ -265,7 +265,7 @@ export default function Profile() {
                         <h2 className="text-[18px] font-black text-gray-900 mb-1">會員等級權益</h2>
                         <p className="text-[12px] text-gray-400 font-semibold mb-5">消費累積點數，自動升等，享受更多特權</p>
                         <div className="space-y-3">
-                            {MEMBER_TIERS.map((t, i) => (
+                            {MEMBER_TIERS.map((t) => (
                                 <div key={t.name} className={`p-4 rounded-[18px] border ${t.name === tier.name ? 'border-brand-300 bg-brand-50 ring-1 ring-brand-300' : 'border-gray-100 bg-gray-50'}`}>
                                     <div className="flex items-center gap-2.5 mb-2.5">
                                         <span className="text-2xl">{t.badge}</span>
