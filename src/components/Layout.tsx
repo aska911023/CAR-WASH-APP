@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const isVendor = state.role === 'vendor';
 
     return (
-        <div className={`h-screen flex justify-center overflow-hidden font-sans ${isVendor ? 'bg-gray-100' : 'bg-slate-200'}`}>
+        <div className={`h-dvh flex justify-center overflow-hidden font-sans ${isVendor ? 'bg-gray-100' : 'bg-slate-200'}`}>
             {/* Mobile Container */}
             <div className={`w-full max-w-[430px] h-full flex flex-col relative overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.12)] ${isVendor ? 'bg-white' : 'bg-[#f0f4ff]'}`}>
 
@@ -57,10 +57,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </main>
 
                 {/* Bottom Navigation */}
-                <div className={`sticky bottom-0 w-full border-t pb-7 pt-2 px-1 flex justify-around items-center z-40 shrink-0 ${isVendor
+                <div className={`sticky bottom-0 w-full border-t pt-2 px-1 flex justify-around items-center z-40 shrink-0 ${isVendor
                     ? 'bg-gray-900 border-gray-800'
                     : 'bg-white border-brand-50 shadow-[0_-4px_24px_rgba(37,99,235,0.06)]'
-                    }`}>
+                    }`}
+                    style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom, 1.75rem))' }}
+                >
                     {links.map((link) => {
                         const Icon = link.icon;
                         const active = location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path));
