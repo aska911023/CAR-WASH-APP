@@ -48,12 +48,12 @@ const CUSTOMERS = [
 ];
 
 const TAG_COLORS: Record<string, string> = {
-    'VIP': 'bg-amber-100 text-amber-700 border-amber-200',
-    '鍍膜客': 'bg-blue-100 text-blue-700 border-blue-200',
-    '電動車': 'bg-green-100 text-green-700 border-green-200',
-    '新客': 'bg-purple-100 text-purple-700 border-purple-200',
+    'VIP': 'bg-gray-900 text-white border-gray-900',
+    '鍍膜客': 'bg-gray-100 text-gray-700 border-gray-300',
+    '電動車': 'bg-gray-100 text-gray-700 border-gray-300',
+    '新客': 'bg-gray-100 text-gray-700 border-gray-300',
     '大型車': 'bg-gray-100 text-gray-600 border-gray-200',
-    '定期客': 'bg-brand-100 text-brand-700 border-brand-200',
+    '定期客': 'bg-gray-100 text-gray-700 border-gray-300',
 };
 
 export default function CRM() {
@@ -73,7 +73,7 @@ export default function CRM() {
             <div className="min-h-screen bg-white text-gray-900 pb-24 font-sans">
                 {/* Back header */}
                 <div className="px-5 pt-12 pb-4 bg-white border-b border-gray-100 sticky top-0 z-30">
-                    <button onClick={() => setSelected(null)} className="text-[13px] font-black text-brand-600 mb-3">← 返回客戶列表</button>
+                    <button onClick={() => setSelected(null)} className="text-[13px] font-black text-gray-600 mb-3">← 返回客戶列表</button>
                     <div className="flex items-center gap-3">
                         <img src={customer.avatar} alt="" className="w-14 h-14 rounded-[14px] object-cover border border-gray-100" />
                         <div className="flex-1">
@@ -82,7 +82,7 @@ export default function CRM() {
                         </div>
                         <div className="flex gap-2">
                             <button className="w-9 h-9 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center text-gray-500"><Phone size={15} /></button>
-                            <button className="w-9 h-9 bg-brand-50 border border-brand-200 rounded-xl flex items-center justify-center text-brand-600"><MessageSquare size={15} /></button>
+                            <button className="w-9 h-9 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center text-gray-600"><MessageSquare size={15} /></button>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ export default function CRM() {
                     <div className="bg-white border border-gray-100 rounded-[18px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-[13px] font-black text-gray-700">客戶標籤</h3>
-                            <button className="flex items-center gap-1 text-[11px] font-black text-brand-600"><Plus size={12} /> 新增</button>
+                            <button className="flex items-center gap-1 text-[11px] font-black text-gray-600"><Plus size={12} /> 新增</button>
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {customer.tags.map(tag => (
@@ -123,7 +123,7 @@ export default function CRM() {
                         <textarea
                             defaultValue={customer.note || '尚無備忘錄...'}
                             rows={3}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-[13px] text-gray-700 font-medium resize-none focus:outline-none focus:border-brand-400"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-[13px] text-gray-700 font-medium resize-none focus:outline-none focus:border-gray-400"
                         />
                     </div>
 
@@ -133,12 +133,12 @@ export default function CRM() {
                         <div className="space-y-2.5">
                             {customer.history.map((h, i) => (
                                 <div key={i} className="flex items-center gap-3 p-3 bg-gray-50 border border-gray-100 rounded-[12px]">
-                                    <div className="w-10 h-10 bg-brand-50 border border-brand-100 rounded-xl flex items-center justify-center text-lg shrink-0">🔧</div>
+                                    <div className="w-10 h-10 bg-gray-100 border border-gray-200 rounded-xl flex items-center justify-center text-lg shrink-0">🔧</div>
                                     <div className="flex-1 min-w-0">
                                         <p className="font-black text-[13px] text-gray-900 truncate">{h.service}</p>
                                         <p className="text-[11px] text-gray-400 font-semibold">{h.date}</p>
                                     </div>
-                                    <span className="font-black text-[13px] text-brand-600 shrink-0">{h.price} P</span>
+                                    <span className="font-black text-[13px] text-gray-900 shrink-0">{h.price} P</span>
                                 </div>
                             ))}
                         </div>
@@ -153,7 +153,6 @@ export default function CRM() {
             <div className="px-5 pt-12 pb-4 bg-white sticky top-0 z-30 border-b border-gray-100">
                 <h1 className="text-[22px] font-black tracking-tight text-gray-900 mb-0.5">客戶資料庫</h1>
                 <p className="text-[12px] text-gray-400 font-semibold mb-3">管理顧客關係與保養歷史記錄</p>
-                {/* Summary */}
                 <div className="grid grid-cols-3 gap-2 mb-3">
                     {[
                         { icon: <TrendingUp size={13} />, label: '總客戶', value: CUSTOMERS.length },
@@ -161,7 +160,7 @@ export default function CRM() {
                         { icon: <Clock size={13} />, label: '本月新客', value: 2 },
                     ].map(item => (
                         <div key={item.label} className="bg-gray-50 border border-gray-100 rounded-[12px] p-2.5 flex items-center gap-2">
-                            <span className="text-brand-500">{item.icon}</span>
+                            <span className="text-gray-500">{item.icon}</span>
                             <div>
                                 <p className="text-[15px] font-black text-gray-900 leading-none">{item.value}</p>
                                 <p className="text-[10px] text-gray-400 font-bold">{item.label}</p>
@@ -169,7 +168,7 @@ export default function CRM() {
                         </div>
                     ))}
                 </div>
-                <div className="flex items-center bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 focus-within:border-brand-400 transition-all">
+                <div className="flex items-center bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 focus-within:border-gray-400 transition-all">
                     <Search size={15} className="text-gray-400 mr-2 shrink-0" />
                     <input value={search} onChange={e => setSearch(e.target.value)} type="text" placeholder="搜尋客戶名稱、車牌或標籤..."
                         className="bg-transparent border-none outline-none w-full text-[13px] text-gray-900 placeholder-gray-400 font-medium" />
@@ -184,7 +183,7 @@ export default function CRM() {
                             <div className="flex-1 min-w-0">
                                 <div className="flex justify-between items-start">
                                     <h3 className="font-black text-[15px] text-gray-900">{c.name}</h3>
-                                    <span className="text-[12px] font-black text-brand-600">{c.totalSpend.toLocaleString()} P</span>
+                                    <span className="text-[12px] font-black text-gray-900">{c.totalSpend.toLocaleString()} P</span>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[11px] text-gray-400 font-semibold mb-2">
                                     <MapPin size={10} /> {c.car} · 到訪 {c.visits} 次

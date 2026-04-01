@@ -39,14 +39,14 @@ const RoleSelector = () => {
 
         <div className="flex gap-10">
           <div onClick={() => handleLogin('customer')} className="flex flex-col items-center group cursor-pointer">
-            <div className="w-32 h-32 rounded-[20px] overflow-hidden box-border border-[3px] border-transparent group-hover:border-white transition-all duration-200 relative bg-gradient-to-br from-[#1A2980] to-[#26D0CE] flex items-center justify-center shadow-[0_10px_40px_rgba(26,41,128,0.4)]">
+            <div className="w-32 h-32 rounded-[20px] overflow-hidden box-border border-[3px] border-transparent group-hover:border-white transition-all duration-200 relative bg-gradient-to-br from-gray-600 to-gray-400 flex items-center justify-center shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
               <span className="text-6xl font-bold text-white/90 group-hover:scale-110 transition-transform duration-300">客</span>
             </div>
             <p className="mt-4 text-neutral-400 group-hover:text-white text-xl transition-colors">顧客</p>
           </div>
 
           <div onClick={() => handleLogin('vendor')} className="flex flex-col items-center group cursor-pointer">
-            <div className="w-32 h-32 rounded-[20px] overflow-hidden box-border border-[3px] border-transparent group-hover:border-white transition-all duration-200 relative bg-gradient-to-br from-[#FF416C] to-[#FF4B2B] flex items-center justify-center shadow-[0_10px_40px_rgba(255,65,108,0.4)]">
+            <div className="w-32 h-32 rounded-[20px] overflow-hidden box-border border-[3px] border-transparent group-hover:border-white transition-all duration-200 relative bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
               <span className="text-6xl font-bold text-white/90 group-hover:scale-110 transition-transform duration-300">店</span>
             </div>
             <p className="mt-4 text-neutral-400 group-hover:text-white text-xl transition-colors">店家</p>

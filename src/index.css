@@ -2,21 +2,21 @@
 @import "tailwindcss" theme(static);
 
 @theme {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e3a8a;
-  --color-brand-900: #172554;
+  --color-brand-50: #f9fafb;
+  --color-brand-100: #f3f4f6;
+  --color-brand-200: #e5e7eb;
+  --color-brand-300: #d1d5db;
+  --color-brand-400: #9ca3af;
+  --color-brand-500: #6b7280;
+  --color-brand-600: #4b5563;
+  --color-brand-700: #374151;
+  --color-brand-800: #1f2937;
+  --color-brand-900: #111827;
 
   --color-status-pending: #d97706;
   --color-status-pendingBg: #fffbeb;
-  --color-status-accepted: #1d4ed8;
-  --color-status-acceptedBg: #eff6ff;
+  --color-status-accepted: #374151;
+  --color-status-acceptedBg: #f3f4f6;
   --color-status-done: #15803d;
   --color-status-doneBg: #f0fdf4;
   --color-status-cancelled: #6b7280;
@@ -25,14 +25,14 @@
   --font-sans: 'Inter', system-ui, sans-serif;
 
   --shadow-card: 0 4px 20px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 8px 30px rgba(59,130,246,0.12);
-  --shadow-blue-glow: 0 4px 20px rgba(37,99,235,0.3);
+  --shadow-card-hover: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-blue-glow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 :root {
-  --blue-primary: #2563eb;
-  --blue-light: #eff6ff;
-  --navy: #1e3a8a;
+  --blue-primary: #111827;
+  --blue-light: #f3f4f6;
+  --navy: #111827;
   --vendor-bg: #ffffff;
   --vendor-surface: #f8f9fb;
 }
@@ -82,9 +82,9 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2563eb;
+  background-color: #111827;
   color: white;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
 }
 .fab:active {
@@ -105,9 +105,9 @@ body,
 }
 
 .badge-confirmed {
-  background-color: #eff6ff;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
   font-size: 11px;
   font-weight: 900;
   padding: 0.25rem 0.625rem;

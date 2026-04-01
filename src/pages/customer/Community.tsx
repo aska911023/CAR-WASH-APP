@@ -37,19 +37,18 @@ const DEMO_IMAGES = [
     'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&auto=format&fit=crop&q=80',
 ];
 
-// ── Post Card (shared) ──────────────────────────────────────────────
 function PostCard({ post, compact = false, liked, onLike }: { post: Post; compact?: boolean; liked: boolean; onLike: () => void }) {
     return (
-        <div className={`bg-white border border-brand-50 rounded-[20px] ${compact ? 'overflow-hidden shadow-card' : 'p-4 shadow-card'}`}>
+        <div className={`bg-white border border-gray-100 rounded-[20px] ${compact ? 'overflow-hidden shadow-card' : 'p-4 shadow-card'}`}>
             {compact ? (
                 <>
                     {post.image && <img src={post.image} alt="" className="w-full object-cover" style={{ height: post.id % 2 === 0 ? 160 : 120 }} />}
                     <div className="p-3">
                         <div className="flex items-center gap-2 mb-2">
-                            <img src={post.avatar} alt={post.user} className="w-7 h-7 rounded-full border border-brand-100 object-cover" />
+                            <img src={post.avatar} alt={post.user} className="w-7 h-7 rounded-full border border-gray-200 object-cover" />
                             <div>
-                                <p className="font-black text-[12px] text-neutral-800 leading-tight">{post.user}</p>
-                                <p className="text-[10px] text-neutral-400 font-medium">{post.time}</p>
+                                <p className="font-black text-[12px] text-gray-800 leading-tight">{post.user}</p>
+                                <p className="text-[10px] text-gray-400 font-medium">{post.time}</p>
                             </div>
                         </div>
                         {post.pending && (
@@ -57,18 +56,18 @@ function PostCard({ post, compact = false, liked, onLike }: { post: Post; compac
                                 ⏳ 審核中
                             </span>
                         )}
-                        <p className="text-[12px] text-neutral-600 leading-relaxed mb-2">{post.content}</p>
+                        <p className="text-[12px] text-gray-600 leading-relaxed mb-2">{post.content}</p>
                         {post.tags && post.tags.length > 0 && (
                             <div className="flex flex-wrap gap-1 mb-2">
-                                {post.tags.map(t => <span key={t} className="text-[10px] font-bold text-brand-500">#{t}</span>)}
+                                {post.tags.map(t => <span key={t} className="text-[10px] font-bold text-gray-500">#{t}</span>)}
                             </div>
                         )}
-                        <div className="flex items-center gap-3 text-neutral-400 text-[11px] font-bold">
-                            <button onClick={onLike} className={`flex items-center gap-1 transition-colors ${liked ? 'text-pink-500' : ''}`}>
-                                <Heart size={14} className={liked ? 'fill-pink-500' : ''} />
+                        <div className="flex items-center gap-3 text-gray-400 text-[11px] font-bold">
+                            <button onClick={onLike} className={`flex items-center gap-1 transition-colors ${liked ? 'text-red-500' : ''}`}>
+                                <Heart size={14} className={liked ? 'fill-red-500' : ''} />
                                 {post.likes + (liked ? 1 : 0)}
                             </button>
-                            <button className="flex items-center gap-1 active:text-brand-500 transition-colors">
+                            <button className="flex items-center gap-1 active:text-gray-600 transition-colors">
                                 <MessageCircle size={14} /> {post.comments}
                             </button>
                         </div>
@@ -78,41 +77,41 @@ function PostCard({ post, compact = false, liked, onLike }: { post: Post; compac
                 <>
                     <div className="flex justify-between items-center mb-3">
                         <div className="flex items-center gap-3">
-                            <img src={post.avatar} alt={post.user} className="w-10 h-10 rounded-[12px] border border-brand-100 object-cover" />
+                            <img src={post.avatar} alt={post.user} className="w-10 h-10 rounded-[12px] border border-gray-200 object-cover" />
                             <div>
-                                <h4 className="font-black text-[14px] text-neutral-900 leading-tight">{post.user}</h4>
-                                <span className="text-[11px] font-medium text-neutral-400">{post.time}</span>
+                                <h4 className="font-black text-[14px] text-gray-900 leading-tight">{post.user}</h4>
+                                <span className="text-[11px] font-medium text-gray-400">{post.time}</span>
                             </div>
                         </div>
-                        <button className="text-neutral-300 active:text-neutral-700 p-1"><MoreHorizontal size={18} /></button>
+                        <button className="text-gray-300 active:text-gray-700 p-1"><MoreHorizontal size={18} /></button>
                     </div>
                     {post.pending && (
                         <div className="flex items-center gap-1.5 text-[11px] font-black text-amber-600 bg-amber-50 border border-amber-200 px-2.5 py-1.5 rounded-xl mb-3">
                             ⏳ 您的貼文正在審核中，審核通過後將對所有人顯示
                         </div>
                     )}
-                    <p className="text-[13px] text-neutral-700 leading-relaxed mb-3">{post.content}</p>
+                    <p className="text-[13px] text-gray-700 leading-relaxed mb-3">{post.content}</p>
                     {post.tags && post.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-3">
                             {post.tags.map(t => (
-                                <span key={t} className="text-[11px] font-bold text-brand-500 bg-brand-50 px-2 py-0.5 rounded-full">#{t}</span>
+                                <span key={t} className="text-[11px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">#{t}</span>
                             ))}
                         </div>
                     )}
                     {post.image && (
-                        <div className="rounded-[14px] overflow-hidden mb-3 border border-brand-50">
+                        <div className="rounded-[14px] overflow-hidden mb-3 border border-gray-100">
                             <img src={post.image} alt="" className="w-full h-[180px] object-cover" />
                         </div>
                     )}
-                    <div className="flex items-center gap-5 pt-2 border-t border-neutral-50 text-neutral-400 font-bold text-[13px]">
-                        <button onClick={onLike} className={`flex items-center gap-1.5 transition-colors ${liked ? 'text-pink-500' : ''}`}>
-                            <Heart size={16} className={liked ? 'fill-pink-500' : ''} />
+                    <div className="flex items-center gap-5 pt-2 border-t border-gray-50 text-gray-400 font-bold text-[13px]">
+                        <button onClick={onLike} className={`flex items-center gap-1.5 transition-colors ${liked ? 'text-red-500' : ''}`}>
+                            <Heart size={16} className={liked ? 'fill-red-500' : ''} />
                             {post.likes + (liked ? 1 : 0)}
                         </button>
-                        <button className="flex items-center gap-1.5 active:text-brand-500 transition-colors">
+                        <button className="flex items-center gap-1.5 active:text-gray-600 transition-colors">
                             <MessageCircle size={16} /> {post.comments}
                         </button>
-                        <button className="flex items-center gap-1.5 active:text-green-500 transition-colors ml-auto">
+                        <button className="flex items-center gap-1.5 active:text-gray-600 transition-colors ml-auto">
                             <Share2 size={16} />
                         </button>
                     </div>
@@ -122,14 +121,12 @@ function PostCard({ post, compact = false, liked, onLike }: { post: Post; compac
     );
 }
 
-// ── Main Component ─────────────────────────────────────────────────
 export default function Community() {
     const [activeTab, setActiveTab] = useState('發現');
     const [liked, setLiked] = useState<number[]>([]);
     const [discoverPosts, setDiscoverPosts] = useState<Post[]>(INIT_DISCOVER);
     const [followPosts, setFollowPosts] = useState<Post[]>(INIT_FOLLOW);
 
-    // Post composer state
     const [showComposer, setShowComposer] = useState(false);
     const [draftText, setDraftText] = useState('');
     const [draftImage, setDraftImage] = useState<string | null>(null);
@@ -183,42 +180,35 @@ export default function Community() {
     const canPublish = draftText.trim().length > 0;
 
     return (
-        <div className="min-h-screen text-neutral-900 bg-[#f0f4ff] pb-28">
+        <div className="min-h-screen text-gray-900 bg-gray-50 pb-28">
 
             {/* ── Header ─────────────────────────────── */}
-            <div className="px-5 pt-10 pb-0 sticky top-0 z-30 bg-[#f0f4ff]">
+            <div className="px-5 pt-10 pb-0 sticky top-0 z-30 bg-gray-50">
                 <div className="flex items-center justify-between mb-4">
                     <div>
-                        <h1 className="text-[22px] font-black tracking-tight" style={{ color: '#1e3a8a' }}>車友圈</h1>
-                        <p className="text-[12px] font-semibold" style={{ color: '#3b82f6' }}>分享車輛大小事 · 真實評價</p>
+                        <h1 className="text-[22px] font-black tracking-tight text-gray-900">車友圈</h1>
+                        <p className="text-[12px] font-semibold text-gray-400">分享車輛大小事 · 真實評價</p>
                     </div>
                     <button
                         onClick={() => setShowComposer(true)}
-                        className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl active:scale-95 transition-all text-[12px] font-black text-white"
-                        style={{ background: '#2563eb', boxShadow: '0 4px 20px rgba(37,99,235,0.3)' }}
+                        className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl active:scale-95 transition-all text-[12px] font-black text-white bg-gray-900 shadow-lg"
                     >
                         <PenSquare size={15} /> 發文
                     </button>
                 </div>
 
-                {/* Submitted toast */}
                 {submitted && (
                     <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-[12px] font-black px-3 py-2 rounded-xl mb-3 animate-in">
                         <CheckCircle2 size={14} /> 貼文已送出，審核通過後即可公開！
                     </div>
                 )}
 
-                {/* Tabs */}
-                <div className="flex" style={{ borderBottom: '1px solid #dbeafe' }}>
+                <div className="flex border-b border-gray-200">
                     {TABS.map(tab => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className="flex-1 py-2.5 text-[13px] font-black tracking-wide transition-all border-b-2"
-                            style={activeTab === tab
-                                ? { color: '#2563eb', borderColor: '#2563eb' }
-                                : { color: '#737373', borderColor: 'transparent' }
-                            }
+                            className={`flex-1 py-2.5 text-[13px] font-black tracking-wide transition-all border-b-2 ${activeTab === tab ? 'text-gray-900 border-gray-900' : 'text-gray-400 border-transparent'}`}
                         >
                             {tab}
                         </button>
@@ -226,7 +216,6 @@ export default function Community() {
                 </div>
             </div>
 
-            {/* ── 發現: Masonry 2-col ────────────────── */}
             {activeTab === '發現' && (
                 <div className="px-4 pt-4">
                     <div className="masonry-2col">
@@ -239,7 +228,6 @@ export default function Community() {
                 </div>
             )}
 
-            {/* ── 關注: Single column ────────────────── */}
             {activeTab === '關注' && (
                 <div className="px-4 pt-4 space-y-3">
                     {followPosts.map(post => (
@@ -248,23 +236,19 @@ export default function Community() {
                 </div>
             )}
 
-            {/* ── 附近 ───────────────────────────────── */}
             {activeTab === '附近' && (
                 <div className="px-5 pt-10 flex flex-col items-center text-center">
-                    <div className="w-20 h-20 rounded-full bg-brand-100 flex items-center justify-center mb-4">
-                        <MapPin size={36} className="text-brand-500" />
+                    <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <MapPin size={36} className="text-gray-400" />
                     </div>
-                    <h3 className="text-[17px] font-black text-neutral-800 mb-2">探索附近車友</h3>
-                    <p className="text-[13px] text-neutral-400 font-medium max-w-[240px]">開啟定位後，即可看到附近車友的即時動態與評價</p>
-                    <button className="mt-6 px-6 py-3 bg-brand-600 text-white rounded-2xl font-black text-[14px] shadow-blue-glow active:scale-95 transition-all">
+                    <h3 className="text-[17px] font-black text-gray-800 mb-2">探索附近車友</h3>
+                    <p className="text-[13px] text-gray-400 font-medium max-w-[240px]">開啟定位後，即可看到附近車友的即時動態與評價</p>
+                    <button className="mt-6 px-6 py-3 bg-gray-900 text-white rounded-2xl font-black text-[14px] shadow-lg active:scale-95 transition-all">
                         開啟定位權限
                     </button>
                 </div>
             )}
 
-            {/* ══════════════════════════════════════════
-                POST COMPOSER BOTTOM SHEET
-            ══════════════════════════════════════════ */}
             {showComposer && (
                 <div className="fixed inset-0 z-50 flex flex-col justify-end" style={{ background: 'rgba(0,0,0,0.5)' }}
                     onClick={(e) => { if (e.target === e.currentTarget) setShowComposer(false); }}>
@@ -272,64 +256,57 @@ export default function Community() {
                     <div className="bg-white rounded-t-[28px] w-full max-w-[430px] mx-auto overflow-hidden"
                         style={{ maxHeight: '92vh', display: 'flex', flexDirection: 'column' }}>
 
-                        {/* Sheet Header */}
-                        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-neutral-100 shrink-0">
-                            <button onClick={() => setShowComposer(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 text-neutral-500">
+                        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100 shrink-0">
+                            <button onClick={() => setShowComposer(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500">
                                 <X size={16} />
                             </button>
-                            <h2 className="text-[15px] font-black text-neutral-900">發佈貼文</h2>
+                            <h2 className="text-[15px] font-black text-gray-900">發佈貼文</h2>
                             <button
                                 onClick={handlePublish}
                                 disabled={!canPublish}
                                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-black text-[13px] transition-all ${canPublish
-                                    ? 'bg-brand-600 text-white shadow-blue-glow active:scale-95'
-                                    : 'bg-neutral-100 text-neutral-300 cursor-not-allowed'
+                                    ? 'bg-gray-900 text-white shadow-lg active:scale-95'
+                                    : 'bg-gray-100 text-gray-300 cursor-not-allowed'
                                     }`}
                             >
                                 <Send size={13} /> 發送
                             </button>
                         </div>
 
-                        {/* Scrollable body */}
                         <div className="flex-1 overflow-y-auto px-5 pt-4 pb-6 space-y-4">
-
-                            {/* Author row */}
                             <div className="flex items-center gap-3">
-                                <img src="https://i.pravatar.cc/150?u=washhub_me" alt="" className="w-10 h-10 rounded-[12px] border border-brand-100 object-cover" />
+                                <img src="https://i.pravatar.cc/150?u=washhub_me" alt="" className="w-10 h-10 rounded-[12px] border border-gray-200 object-cover" />
                                 <div>
-                                    <p className="font-black text-[14px] text-neutral-900">車主小明</p>
-                                    <div className="flex items-center gap-1 text-[11px] text-neutral-400 font-semibold">
+                                    <p className="font-black text-[14px] text-gray-900">車主小明</p>
+                                    <div className="flex items-center gap-1 text-[11px] text-gray-400 font-semibold">
                                         <span>公開</span> <ChevronDown size={12} />
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Text input */}
                             <textarea
                                 ref={textRef}
                                 value={draftText}
                                 onChange={e => setDraftText(e.target.value)}
                                 placeholder="分享你的愛車故事、用車心得、好店推薦…"
                                 rows={5}
-                                className="w-full resize-none text-[14px] text-neutral-800 placeholder-neutral-300 font-medium leading-relaxed border-none outline-none bg-transparent"
+                                className="w-full resize-none text-[14px] text-gray-800 placeholder-gray-300 font-medium leading-relaxed border-none outline-none bg-transparent"
                                 autoFocus
                             />
 
-                            {/* Tag display */}
                             {draftTags.length > 0 && (
                                 <div className="flex flex-wrap gap-1.5">
                                     {draftTags.map(t => (
                                         <button key={t} onClick={() => toggleTag(t)}
-                                            className="flex items-center gap-1 text-[11px] font-black text-brand-600 bg-brand-50 border border-brand-200 px-2 py-0.5 rounded-full">
+                                            className="flex items-center gap-1 text-[11px] font-black text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full">
                                             #{t} <X size={10} />
                                         </button>
                                     ))}
                                 </div>
                             )}
 
-                            {/* Image preview */}
                             {draftImage && (
-                                <div className="relative rounded-[14px] overflow-hidden border border-brand-50">
+                                <div className="relative rounded-[14px] overflow-hidden border border-gray-100">
                                     <img src={draftImage} alt="" className="w-full h-[180px] object-cover" />
                                     <button
                                         onClick={() => setDraftImage(null)}
@@ -340,29 +317,25 @@ export default function Community() {
                                 </div>
                             )}
 
-                            {/* Divider */}
-                            <div className="border-t border-neutral-100" />
+                            <div className="border-t border-gray-100" />
 
-                            {/* Toolbar */}
                             <div>
-                                <p className="text-[11px] font-black text-neutral-400 uppercase tracking-widest mb-2.5">新增內容</p>
+                                <p className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2.5">新增內容</p>
                                 <div className="flex gap-2 mb-4">
-                                    {/* Demo image picker */}
                                     <button
                                         onClick={() => setDraftImage(DEMO_IMAGES[Math.floor(Math.random() * DEMO_IMAGES.length)])}
-                                        className="flex items-center gap-1.5 px-3.5 py-2 bg-brand-50 border border-brand-200 text-brand-600 rounded-xl text-[12px] font-black"
+                                        className="flex items-center gap-1.5 px-3.5 py-2 bg-gray-100 border border-gray-200 text-gray-600 rounded-xl text-[12px] font-black"
                                     >
                                         <ImageIcon size={14} /> 圖片
                                     </button>
                                     <button
                                         onClick={() => setShowTagInput(v => !v)}
-                                        className="flex items-center gap-1.5 px-3.5 py-2 bg-violet-50 border border-violet-200 text-violet-600 rounded-xl text-[12px] font-black"
+                                        className="flex items-center gap-1.5 px-3.5 py-2 bg-gray-100 border border-gray-200 text-gray-600 rounded-xl text-[12px] font-black"
                                     >
                                         <Hash size={14} /> 話題
                                     </button>
                                 </div>
 
-                                {/* Tag selector */}
                                 {showTagInput && (
                                     <div className="animate-in space-y-2.5">
                                         <div className="flex flex-wrap gap-1.5">
@@ -371,8 +344,8 @@ export default function Community() {
                                                     key={tag}
                                                     onClick={() => toggleTag(tag)}
                                                     className={`text-[11px] font-black px-2.5 py-1 rounded-full border transition-all ${draftTags.includes(tag)
-                                                        ? 'bg-brand-600 text-white border-brand-600'
-                                                        : 'bg-white text-neutral-600 border-neutral-200'
+                                                        ? 'bg-gray-900 text-white border-gray-900'
+                                                        : 'bg-white text-gray-600 border-gray-200'
                                                         }`}
                                                 >
                                                     #{tag}
@@ -385,17 +358,16 @@ export default function Community() {
                                                 onChange={e => setCustomTag(e.target.value)}
                                                 onKeyDown={e => e.key === 'Enter' && addCustomTag()}
                                                 placeholder="自訂話題標籤…"
-                                                className="flex-1 text-[12px] bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-2 outline-none focus:border-brand-400 font-medium"
+                                                className="flex-1 text-[12px] bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 outline-none focus:border-gray-400 font-medium"
                                             />
-                                            <button onClick={addCustomTag} className="px-3 py-2 bg-brand-600 text-white rounded-xl text-[12px] font-black">新增</button>
+                                            <button onClick={addCustomTag} className="px-3 py-2 bg-gray-900 text-white rounded-xl text-[12px] font-black">新增</button>
                                         </div>
                                     </div>
                                 )}
                             </div>
 
-                            {/* Character count */}
                             <div className="flex justify-end">
-                                <span className={`text-[11px] font-bold ${draftText.length > 450 ? 'text-red-500' : 'text-neutral-300'}`}>
+                                <span className={`text-[11px] font-bold ${draftText.length > 450 ? 'text-red-500' : 'text-gray-300'}`}>
                                     {draftText.length} / 500
                                 </span>
                             </div>

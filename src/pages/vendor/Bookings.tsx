@@ -19,7 +19,7 @@ type StatusKey = 'pending' | 'confirmed' | 'in_progress' | 'completed' | 'cancel
 const STATUS_CONFIG: Record<StatusKey, { label: string; badge: string }> = {
     pending: { label: '待確認', badge: 'badge-pending' },
     confirmed: { label: '已接受', badge: 'badge-confirmed' },
-    in_progress: { label: '服務中', badge: 'bg-purple-50 text-purple-700 border border-purple-200 text-[11px] font-black px-2.5 py-1 rounded-full' },
+    in_progress: { label: '服務中', badge: 'bg-gray-900 text-white text-[11px] font-black px-2.5 py-1 rounded-full' },
     completed: { label: '已完成', badge: 'badge-completed' },
     cancelled: { label: '已取消', badge: 'badge-cancelled' },
 };
@@ -58,7 +58,7 @@ export default function Bookings() {
 
             {/* Search + Filter */}
             <div className="flex gap-2 mb-5">
-                <div className="flex items-center bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 flex-1 focus-within:border-brand-400 transition-all">
+                <div className="flex items-center bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 flex-1 focus-within:border-gray-400 transition-all">
                     <Search size={16} className="text-gray-400 mr-2 shrink-0" />
                     <input type="text" placeholder="搜尋客戶或編號..." className="bg-transparent border-none outline-none w-full text-gray-900 placeholder-gray-400 text-[13px] font-medium" />
                 </div>
@@ -71,9 +71,9 @@ export default function Bookings() {
             <div className="flex border-b border-gray-100 mb-5 overflow-x-auto nice-scrollbar">
                 {TABS.map(tab => (
                     <button key={tab.key} onClick={() => setFilter(tab.key)}
-                        className={`px-3 py-2.5 whitespace-nowrap font-black text-[13px] transition-all border-b-2 ${filter === tab.key ? 'border-brand-600 text-brand-700' : 'border-transparent text-gray-400 hover:text-gray-700'}`}>
+                        className={`px-3 py-2.5 whitespace-nowrap font-black text-[13px] transition-all border-b-2 ${filter === tab.key ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-400 hover:text-gray-700'}`}>
                         {tab.label}
-                        <span className={`ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full font-black ${filter === tab.key ? 'bg-brand-100 text-brand-700' : 'bg-gray-100 text-gray-400'}`}>
+                        <span className={`ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full font-black ${filter === tab.key ? 'bg-gray-200 text-gray-700' : 'bg-gray-100 text-gray-400'}`}>
                             {RESERVATIONS.filter(r => tab.key === 'all' || r.status === tab.key).length}
                         </span>
                     </button>
@@ -114,13 +114,13 @@ export default function Bookings() {
                             {(res.status === 'confirmed' || res.status === 'in_progress') && (
                                 <div className="mb-3">
                                     <div className="flex items-center gap-2 mb-2">
-                                        <UserCheck size={13} className="text-brand-500" />
+                                        <UserCheck size={13} className="text-gray-500" />
                                         <span className="text-[11px] font-black text-gray-500 uppercase tracking-wider">指派技師</span>
                                     </div>
                                     <div className="relative">
                                         <button
                                             onClick={() => setBookings(prev => prev.map(b => b.id === res.id ? { ...b, showTech: !b.showTech } : { ...b, showTech: false }))}
-                                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl border text-[13px] font-bold transition-all ${res.technician ? 'border-brand-200 bg-brand-50 text-brand-700' : 'border-gray-200 bg-gray-50 text-gray-400'}`}
+                                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl border text-[13px] font-bold transition-all ${res.technician ? 'border-gray-300 bg-gray-50 text-gray-700' : 'border-gray-200 bg-gray-50 text-gray-400'}`}
                                         >
                                             <span className="flex items-center gap-1.5">
                                                 <UserCheck size={14} />
@@ -132,7 +132,7 @@ export default function Bookings() {
                                             <div className="absolute top-full left-0 right-0 z-20 bg-white border border-gray-200 rounded-xl shadow-lg mt-1 overflow-hidden">
                                                 {TECHNICIANS.slice(1).map(tech => (
                                                     <button key={tech} onClick={() => assignTech(res.id, tech)}
-                                                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-gray-700 hover:bg-brand-50 hover:text-brand-700 transition-colors">
+                                                        className="w-full text-left px-4 py-2.5 text-[13px] font-bold text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors">
                                                         {tech}
                                                     </button>
                                                 ))}
@@ -144,23 +144,23 @@ export default function Bookings() {
 
                             {/* Progress steps for in_progress */}
                             {res.status === 'in_progress' && (
-                                <div className="mb-3 bg-purple-50 border border-purple-100 rounded-[14px] p-3">
-                                    <p className="text-[10px] font-black text-purple-500 uppercase tracking-widest mb-2">服務進度</p>
+                                <div className="mb-3 bg-gray-50 border border-gray-200 rounded-[14px] p-3">
+                                    <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">服務進度</p>
                                     <div className="flex items-center justify-between">
                                         {PROGRESS_STEPS.map((step, idx) => (
                                             <div key={idx} className="flex items-center">
                                                 <div className={`flex flex-col items-center ${idx <= (res.progressStep ?? 0) ? 'opacity-100' : 'opacity-30'}`}>
-                                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black border-2 ${idx < (res.progressStep ?? 0) ? 'bg-green-500 border-green-500 text-white' : idx === (res.progressStep ?? 0) ? 'bg-purple-600 border-purple-600 text-white animate-pulse' : 'bg-white border-gray-200 text-gray-400'}`}>
+                                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black border-2 ${idx < (res.progressStep ?? 0) ? 'bg-green-500 border-green-500 text-white' : idx === (res.progressStep ?? 0) ? 'bg-gray-900 border-gray-900 text-white animate-pulse' : 'bg-white border-gray-200 text-gray-400'}`}>
                                                         {idx < (res.progressStep ?? 0) ? '✓' : idx + 1}
                                                     </div>
-                                                    <span className="text-[9px] font-bold text-purple-600 mt-1 max-w-[50px] text-center leading-tight">{step}</span>
+                                                    <span className="text-[9px] font-bold text-gray-600 mt-1 max-w-[50px] text-center leading-tight">{step}</span>
                                                 </div>
                                                 {idx < PROGRESS_STEPS.length - 1 && <div className={`w-4 h-0.5 ${idx < (res.progressStep ?? 0) ? 'bg-green-400' : 'bg-gray-200'} mb-4 mx-0.5`} />}
                                             </div>
                                         ))}
                                     </div>
                                     <button onClick={() => advanceProgress(res.id)}
-                                        className="w-full mt-2 py-2 bg-purple-600 text-white font-black text-[12px] rounded-[10px] active:bg-purple-700 transition-colors">
+                                        className="w-full mt-2 py-2 bg-gray-900 text-white font-black text-[12px] rounded-[10px] active:bg-gray-800 transition-colors">
                                         推進至下一步驟
                                     </button>
                                 </div>
@@ -179,7 +179,7 @@ export default function Bookings() {
                             )}
                             {res.status === 'confirmed' && (
                                 <div className="flex gap-2">
-                                    <button className="flex-1 py-2.5 bg-purple-50 text-purple-700 border border-purple-200 rounded-xl text-[13px] font-black active:bg-purple-100 transition-colors flex items-center justify-center gap-1.5">
+                                    <button className="flex-1 py-2.5 bg-gray-50 text-gray-700 border border-gray-200 rounded-xl text-[13px] font-black active:bg-gray-100 transition-colors flex items-center justify-center gap-1.5">
                                         🚗 開始服務
                                     </button>
                                     <button className="w-11 h-11 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center text-gray-500 active:bg-gray-100 transition-colors">

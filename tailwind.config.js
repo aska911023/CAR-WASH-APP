@@ -7,28 +7,28 @@ export default {
     theme: {
         extend: {
             colors: {
-                // Customer – Tech Blue palette
+                // Simplified neutral palette
                 brand: {
-                    50: '#eff6ff',
-                    100: '#dbeafe',
-                    200: '#bfdbfe',
-                    300: '#93c5fd',
-                    400: '#60a5fa',
-                    500: '#3b82f6',   // primary blue
-                    600: '#2563eb',   // active / CTA
-                    700: '#1d4ed8',
-                    800: '#1e3a8a',   // navy deep
-                    900: '#172554',
+                    50: '#f9fafb',
+                    100: '#f3f4f6',
+                    200: '#e5e7eb',
+                    300: '#d1d5db',
+                    400: '#9ca3af',
+                    500: '#6b7280',
+                    600: '#4b5563',
+                    700: '#374151',
+                    800: '#1f2937',
+                    900: '#111827',
                 },
-                // Vendor status colors (high contrast on white)
+                // Status colors (minimal)
                 status: {
-                    pending: '#d97706', // amber-600
+                    pending: '#d97706', // amber
                     pendingBg: '#fffbeb',
-                    accepted: '#1d4ed8', // blue-700
-                    acceptedBg: '#eff6ff',
-                    done: '#15803d', // green-700
+                    accepted: '#374151', // gray
+                    acceptedBg: '#f3f4f6',
+                    done: '#15803d', // green
                     doneBg: '#f0fdf4',
-                    cancelled: '#6b7280', // gray-500
+                    cancelled: '#6b7280', // gray
                     cancelledBg: '#f9fafb',
                 },
             },
@@ -37,20 +37,17 @@ export default {
             },
             boxShadow: {
                 'card': '0 4px 20px rgba(0,0,0,0.04)',
-                'card-hover': '0 8px 30px rgba(59,130,246,0.12)',
-                'blue-glow': '0 4px 20px rgba(37,99,235,0.3)',
+                'card-hover': '0 8px 30px rgba(0,0,0,0.08)',
+                'blue-glow': '0 4px 20px rgba(0,0,0,0.15)',
             },
         },
     },
-    // Safelist ensures dynamically-constructed class strings (e.g. in ternaries)
-    // are never purged by Tailwind JIT
     safelist: [
         { pattern: /^(bg|text|border|ring|from|to|via)-brand-(50|100|200|300|400|500|600|700|800|900)$/ },
         { pattern: /^(bg|text|border)-status-(pending|accepted|done|cancelled)(Bg)?$/ },
         'shadow-blue-glow',
         'shadow-card',
         'shadow-card-hover',
-        // badge utility classes from index.css @apply
         'badge-pending',
         'badge-confirmed',
         'badge-completed',

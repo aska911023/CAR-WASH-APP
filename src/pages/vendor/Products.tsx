@@ -52,14 +52,14 @@ export default function Products() {
                     </div>
                     <div className="flex items-center gap-2">
                         {tab === 'b2b' && totalCartItems > 0 && (
-                            <button className="relative flex items-center gap-1.5 px-3 py-2.5 bg-brand-600 text-white font-black text-[12px] rounded-xl shadow-blue-glow">
+                            <button className="relative flex items-center gap-1.5 px-3 py-2.5 bg-gray-900 text-white font-black text-[12px] rounded-xl shadow-lg">
                                 <ShoppingCart size={15} />
                                 採購清單
                                 <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 rounded-full text-[10px] font-black text-white flex items-center justify-center">{totalCartItems}</span>
                             </button>
                         )}
                         {tab === 'retail' && (
-                            <button className="flex items-center gap-1.5 px-4 py-2.5 bg-brand-600 text-white font-black text-[13px] rounded-xl shadow-blue-glow active:scale-95 transition-all">
+                            <button className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-900 text-white font-black text-[13px] rounded-xl shadow-lg active:scale-95 transition-all">
                                 <Plus size={16} strokeWidth={2.5} /> 新增商品
                             </button>
                         )}
@@ -69,10 +69,10 @@ export default function Products() {
                 {/* Tab selector */}
                 <div className="flex bg-gray-100 rounded-[14px] p-1">
                     <button onClick={() => setTab('retail')} className={`flex-1 py-2 text-[13px] font-black rounded-[10px] transition-all ${tab === 'retail' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500'}`}>
-                        🛒 C端商城
+                        C端商城
                     </button>
-                    <button onClick={() => setTab('b2b')} className={`flex-1 py-2 text-[13px] font-black rounded-[10px] transition-all ${tab === 'b2b' ? 'bg-white text-brand-700 shadow-sm' : 'text-gray-500'}`}>
-                        🏭 B2B 批發
+                    <button onClick={() => setTab('b2b')} className={`flex-1 py-2 text-[13px] font-black rounded-[10px] transition-all ${tab === 'b2b' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500'}`}>
+                        B2B 批發
                     </button>
                 </div>
             </div>
@@ -108,7 +108,7 @@ export default function Products() {
                                                 <StockBadge stock={prod.stock} />
                                             </div>
                                             <div className="flex items-center gap-3 text-[12px] mb-2">
-                                                <span className="font-black text-brand-600">{prod.price} <span className="font-bold text-gray-400">P</span></span>
+                                                <span className="font-black text-gray-900">{prod.price} <span className="font-bold text-gray-400">P</span></span>
                                                 <span className="text-gray-300">|</span>
                                                 <span className="text-gray-400 font-semibold">庫存 {prod.stock} 件</span>
                                                 <span className="text-gray-300">|</span>
@@ -123,8 +123,8 @@ export default function Products() {
                                 </div>
                             ))}
 
-                            <button className="w-full py-6 border-2 border-dashed border-gray-200 rounded-[20px] flex flex-col items-center gap-2 text-gray-400 hover:border-brand-300 hover:bg-brand-50/50 hover:text-brand-500 transition-all group">
-                                <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 group-hover:border-brand-200 group-hover:bg-brand-50 flex items-center justify-center transition-all"><Plus size={20} strokeWidth={2.5} /></div>
+                            <button className="w-full py-6 border-2 border-dashed border-gray-200 rounded-[20px] flex flex-col items-center gap-2 text-gray-400 hover:border-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-all group">
+                                <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 group-hover:border-gray-300 group-hover:bg-gray-100 flex items-center justify-center transition-all"><Plus size={20} strokeWidth={2.5} /></div>
                                 <span className="text-[13px] font-black">新增商品</span>
                             </button>
                         </div>
@@ -134,10 +134,10 @@ export default function Products() {
                 {/* ── B2B Wholesale ─────────────────── */}
                 {tab === 'b2b' && (
                     <>
-                        <div className="bg-gradient-to-r from-brand-600 to-brand-500 rounded-[18px] p-4 mb-4 text-white">
-                            <p className="text-[10px] font-black uppercase tracking-widest text-blue-200 mb-1">門店專屬 B2B 批發商城</p>
+                        <div className="bg-gray-900 rounded-[18px] p-4 mb-4 text-white">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">門店專屬 B2B 批發商城</p>
                             <h2 className="text-[17px] font-black mb-0.5">以批發價直接進貨</h2>
-                            <p className="text-[11px] text-blue-200 font-semibold">合作供應商 | 配送至門市 | 最低起訂量優惠</p>
+                            <p className="text-[11px] text-gray-400 font-semibold">合作供應商 | 配送至門市 | 最低起訂量優惠</p>
                         </div>
 
                         <div className="flex flex-col gap-3">
@@ -159,7 +159,7 @@ export default function Products() {
                                                 </div>
                                                 <p className="text-[10px] text-gray-400 font-semibold mb-1.5">供應商：{prod.supplier} · <span className="flex items-center gap-0.5 inline-flex"><Star size={9} className="fill-amber-400 text-amber-400" /> {prod.rating}</span></p>
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-black text-[16px] text-brand-600">${prod.wholesale}<span className="text-[11px] text-gray-400 font-bold">/{prod.unit}</span></span>
+                                                    <span className="font-black text-[16px] text-gray-900">${prod.wholesale}<span className="text-[11px] text-gray-400 font-bold">/{prod.unit}</span></span>
                                                     <span className="text-[11px] text-gray-400 line-through">${prod.retail}</span>
                                                     <span className="text-[10px] font-black bg-red-100 text-red-600 px-1.5 py-0.5 rounded">-{discount}%</span>
                                                 </div>
@@ -174,11 +174,11 @@ export default function Products() {
                                                         className="w-9 h-9 bg-gray-100 border border-gray-200 rounded-xl font-black text-gray-600 text-lg flex items-center justify-center">-</button>
                                                     <span className="font-black text-[15px] text-gray-900 flex-1 text-center">{qty}</span>
                                                     <button onClick={() => addToCart(prod.id)}
-                                                        className="w-9 h-9 bg-brand-50 border border-brand-200 rounded-xl font-black text-brand-600 text-lg flex items-center justify-center">+</button>
+                                                        className="w-9 h-9 bg-gray-100 border border-gray-200 rounded-xl font-black text-gray-900 text-lg flex items-center justify-center">+</button>
                                                 </div>
                                             ) : (
                                                 <button onClick={() => prod.inStock && addToCart(prod.id)} disabled={!prod.inStock}
-                                                    className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-[13px] font-black transition-colors ${prod.inStock ? 'bg-brand-50 text-brand-700 border border-brand-200 active:bg-brand-100' : 'bg-gray-50 text-gray-400 border border-gray-200 cursor-not-allowed'}`}>
+                                                    className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-[13px] font-black transition-colors ${prod.inStock ? 'bg-gray-50 text-gray-700 border border-gray-200 active:bg-gray-100' : 'bg-gray-50 text-gray-400 border border-gray-200 cursor-not-allowed'}`}>
                                                     <Truck size={14} /> 加入採購清單
                                                 </button>
                                             )}
